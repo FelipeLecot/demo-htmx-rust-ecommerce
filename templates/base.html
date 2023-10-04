@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<link href="/assets/main.css" rel="stylesheet" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet"> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/htmx/1.9.6/htmx.min.js" integrity="sha512-tGWc4YBM6ag1pJndcieiU2r+lJXdzBRk70mHE13JoGeZI/QdWQkQ6q1CL1xYdJtTOfARf5oPcxJCnS6bLaM+KA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<title>{% block title %}{{ title }}{% endblock %}</title>
+		{% block head %}{% endblock %}
+	</head>
+	<body>
+		<div id="content">
+			{% block content %}{% endblock %}
+		</div>
+	</body>
+</html>

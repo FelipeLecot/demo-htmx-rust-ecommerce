@@ -20,7 +20,11 @@ async fn main() -> anyhow::Result<()> {
         .init();
     info!("initializing router...");
     let assets_path = std::env::current_dir().unwrap();
-    let router = Router::new().route("/", get(hello)).nest_service(        
+    let api_router = Router::new().route("/hello", get(hello_from_the_server));
+    let router = Router::new()
+    .nest("/api", api_router)
+    .route("/", get(hello))
+    .nest_service(        
         "/assets",        
         ServeDir::new(format!("{}/assets", assets_path.to_str().unwrap())),    
     );
@@ -37,6 +41,7 @@ async fn hello() -> impl IntoResponse {
     let template = HelloTemplate {};
     HtmlTemplate(template)
 }
+async fn hello_from_the_server() -> &'static str {"Hello!"}
 #[derive(Template)]
 #[template(path = "index.html")]
 struct HelloTemplate;
