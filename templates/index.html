@@ -1,20 +1,605 @@
-{% extends "base.html" %}{% block title %}Hello!{% endblock %}{% block content %}
-<div class="inline-flex flex-row space-x-2 px-8 py-4">
-	<h1 class="text-green-500">Howdy!</h1>
-	<a
-		href="/another-page"
-		class="text-indigo-500 underline hover:text-indigo-300"
-		>Another page</a
-	>
-	<button
-		type="button"
-		hx-get="/api/hello"
-		hx-swap="innerHtml"
-		class="rounded-md bg-indigo-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-	>
-		Say hello
-	</button>
-</div>
-{% include "../elements/test.html" %}
-{% endblock %}
+{% extends "base.html" %}{% block title %}Demo E-commerce Rust + HTMX{% endblock %}
 
+{% block content%}
+
+{% include "navigation.html" %}
+
+{% include "banner.html" %}
+
+{% include "categories.html" %}
+
+<div class="container pb-16">
+	<h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">
+		top new arrival
+	</h2>
+	<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+		<div class="bg-white shadow rounded overflow-hidden group">
+			<a href="#" class="relative">
+				<img
+					src="/assets/products/product1.jpg"
+					alt="product 1"
+					class="w-full h-80 object-cover"
+				/>
+				<div
+					class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition"
+				>
+				</div>
+			</a>
+			<div class="pt-4 pb-3 px-4">
+				<a href="#">
+					<h4
+						class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition"
+					>
+						Coat
+					</h4>
+				</a>
+				<div class="flex items-baseline mb-1 space-x-2">
+					<p class="text-xl text-primary font-semibold">$45.00</p>
+					<p class="text-sm text-gray-400 line-through">$55.90</p>
+				</div>
+				<div class="flex items-center">
+					<div class="flex gap-1 text-sm text-yellow-400">
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star text-gray-500"></i></span>
+						<span><i class="fa-solid fa-star text-gray-500"></i></span>
+					</div>
+					<div class="text-xs text-gray-500 ml-3">(20)</div>
+				</div>
+			</div>
+			<div class="flex">
+				<button
+					href="#"
+					class="mr-1 block w-full py-1 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition"
+					>Add to cart
+				</button>
+				<button
+					href="#"
+					class="ml-1 block w-full py-1 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition"
+					>Add to favorites
+				</button>
+			</div>
+		</div>
+		<div class="bg-white shadow rounded overflow-hidden group">
+			<a href="#" class="relative">
+				<img
+					src="/assets/products/product2.jpg"
+					alt="product 2"
+					class="w-full h-80 object-cover"
+				/>
+				<div
+					class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition"
+				>
+				</div>
+			</a>
+			<div class="pt-4 pb-3 px-4">
+				<a href="#">
+					<h4
+						class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition"
+					>
+						Light brown trousers
+					</h4>
+				</a>
+				<div class="flex items-baseline mb-1 space-x-2">
+					<p class="text-xl text-primary font-semibold">$45.00</p>
+					<p class="text-sm text-gray-400 line-through">$55.90</p>
+				</div>
+				<div class="flex items-center">
+					<div class="flex gap-1 text-sm text-yellow-400">
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star text-gray-500"></i></span>
+					</div>
+					<div class="text-xs text-gray-500 ml-3">(123)</div>
+				</div>
+			</div>
+			<div class="flex">
+				<button
+					href="#"
+					class="mr-1 block w-full py-1 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition"
+					>Add to cart
+				</button>
+				<button
+					href="#"
+					class="ml-1 block w-full py-1 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition"
+					>Add to favorites
+				</button>
+			</div>
+		</div>
+		<div class="bg-white shadow rounded overflow-hidden group">
+			<a href="#" class="relative">
+				<img
+					src="/assets/products/product3.jpg"
+					alt="product 3"
+					class="w-full h-80 object-cover"
+				/>
+				<div
+					class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition"
+				>
+				</div>
+			</a>
+			<div class="pt-4 pb-3 px-4">
+				<a href="#">
+					<h4
+						class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition"
+					>
+						White t-shirt
+					</h4>
+				</a>
+				<div class="flex items-baseline mb-1 space-x-2">
+					<p class="text-xl text-primary font-semibold">$45.00</p>
+					<p class="text-sm text-gray-400 line-through">$55.90</p>
+				</div>
+				<div class="flex items-center">
+					<div class="flex gap-1 text-sm text-yellow-400">
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star text-gray-500"></i></span>
+					</div>
+					<div class="text-xs text-gray-500 ml-3">(23)</div>
+				</div>
+			</div>
+			<div class="flex">
+				<button
+					href="#"
+					class="mr-1 block w-full py-1 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition"
+					>Add to cart
+				</button>
+				<button
+					href="#"
+					class="ml-1 block w-full py-1 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition"
+					>Add to favorites
+				</button>
+			</div>
+		</div>
+		<div class="bg-white shadow rounded overflow-hidden group">
+			<a href="#" class="relative">
+				<img
+					src="/assets/products/product4.jpg"
+					alt="product 4"
+					class="w-full h-80 object-cover"
+				/>
+				<div
+					class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition"
+				>
+				</div>
+			</a>
+			<div class="pt-4 pb-3 px-4">
+				<a href="#">
+					<h4
+						class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition"
+					>
+						Short cowboy boots
+					</h4>
+				</a>
+				<div class="flex items-baseline mb-1 space-x-2">
+					<p class="text-xl text-primary font-semibold">$45.00</p>
+					<p class="text-sm text-gray-400 line-through">$55.90</p>
+				</div>
+				<div class="flex items-center">
+					<div class="flex gap-1 text-sm text-yellow-400">
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star text-gray-500"></i></span>
+						<span><i class="fa-solid fa-star text-gray-500"></i></span>
+					</div>
+					<div class="text-xs text-gray-500 ml-3">(223)</div>
+				</div>
+			</div>
+			<div class="flex">
+				<button
+					href="#"
+					class="mr-1 block w-full py-1 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition"
+					>Add to cart
+				</button>
+				<button
+					href="#"
+					class="ml-1 block w-full py-1 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition"
+					>Add to favorites
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% include "offer.html" %}
+
+<div class="container pb-16">
+	<h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">
+		recomended for you
+	</h2>
+	<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+		<div class="bg-white shadow rounded overflow-hidden group">
+			<a href="#" class="relative">
+				<img
+					src="/assets/products/product5.jpg"
+					alt="product 5"
+					class="w-full h-80 object-cover"
+				/>
+				<div
+					class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition"
+				>
+				</div>
+			</a>
+			<div class="pt-4 pb-3 px-4">
+				<a href="#">
+					<h4
+						class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition"
+					>
+						Nylon jacket
+					</h4>
+				</a>
+				<div class="flex items-baseline mb-1 space-x-2">
+					<p class="text-xl text-primary font-semibold">$45.00</p>
+					<p class="text-sm text-gray-400 line-through">$55.90</p>
+				</div>
+				<div class="flex items-center">
+					<div class="flex gap-1 text-sm text-yellow-400">
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star text-gray-500"></i></span>
+					</div>
+					<div class="text-xs text-gray-500 ml-3">(24)</div>
+				</div>
+			</div>
+			<div class="flex">
+				<button
+					href="#"
+					class="mr-1 block w-full py-1 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition"
+					>Add to cart
+				</button>
+				<button
+					href="#"
+					class="ml-1 block w-full py-1 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition"
+					>Add to favorites
+				</button>
+			</div>
+		</div>
+		<div class="bg-white shadow rounded overflow-hidden group">
+			<a href="#" class="relative">
+				<img
+					src="/assets/products/product6.jpg"
+					alt="product 6"
+					class="w-full h-80 object-cover"
+				/>
+				<div
+					class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition"
+				>
+				</div>
+			</a>
+			<div class="pt-4 pb-3 px-4">
+				<a href="#">
+					<h4
+						class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition"
+					>
+						Wool coat
+					</h4>
+				</a>
+				<div class="flex items-baseline mb-1 space-x-2">
+					<p class="text-xl text-primary font-semibold">$45.00</p>
+					<p class="text-sm text-gray-400 line-through">$55.90</p>
+				</div>
+				<div class="flex items-center">
+					<div class="flex gap-1 text-sm text-yellow-400">
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star text-gray-500"></i></span>
+					</div>
+					<div class="text-xs text-gray-500 ml-3">(43)</div>
+				</div>
+			</div>
+			<div class="flex">
+				<button
+					href="#"
+					class="mr-1 block w-full py-1 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition"
+					>Add to cart
+				</button>
+				<button
+					href="#"
+					class="ml-1 block w-full py-1 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition"
+					>Add to favorites
+				</button>
+			</div>
+		</div>
+		<div class="bg-white shadow rounded overflow-hidden group">
+			<a href="#" class="relative">
+				<img
+					src="/assets/products/product7.jpg"
+					alt="product 7"
+					class="w-full h-80 object-cover"
+				/>
+				<div
+					class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition"
+				>
+				</div>
+			</a>
+			<div class="pt-4 pb-3 px-4">
+				<a href="#">
+					<h4
+						class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition"
+					>
+						Jean jacket
+					</h4>
+				</a>
+				<div class="flex items-baseline mb-1 space-x-2">
+					<p class="text-xl text-primary font-semibold">$45.00</p>
+					<p class="text-sm text-gray-400 line-through">$55.90</p>
+				</div>
+				<div class="flex items-center">
+					<div class="flex gap-1 text-sm text-yellow-400">
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star text-gray-500"></i></span>
+					</div>
+					<div class="text-xs text-gray-500 ml-3">(102)</div>
+				</div>
+			</div>
+			<div class="flex">
+				<button
+					href="#"
+					class="mr-1 block w-full py-1 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition"
+					>Add to cart
+				</button>
+				<button
+					href="#"
+					class="ml-1 block w-full py-1 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition"
+					>Add to favorites
+				</button>
+			</div>
+		</div>
+		<div class="bg-white shadow rounded overflow-hidden group">
+			<a href="#" class="relative">
+				<img
+					src="/assets/products/product8.jpg"
+					alt="product 8"
+					class="w-full h-80 object-cover"
+				/>
+				<div
+					class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition"
+				>
+				</div>
+			</a>
+			<div class="pt-4 pb-3 px-4">
+				<a href="#">
+					<h4
+						class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition"
+					>
+						White sweatshirt
+					</h4>
+				</a>
+				<div class="flex items-baseline mb-1 space-x-2">
+					<p class="text-xl text-primary font-semibold">$45.00</p>
+					<p class="text-sm text-gray-400 line-through">$55.90</p>
+				</div>
+				<div class="flex items-center">
+					<div class="flex gap-1 text-sm text-yellow-400">
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star text-gray-500"></i></span>
+					</div>
+					<div class="text-xs text-gray-500 ml-3">(170)</div>
+				</div>
+			</div>
+			<div class="flex">
+				<button
+					href="#"
+					class="mr-1 block w-full py-1 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition"
+					>Add to cart
+				</button>
+				<button
+					href="#"
+					class="ml-1 block w-full py-1 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition"
+					>Add to favorites
+				</button>
+			</div>
+		</div>
+		<div class="bg-white shadow rounded overflow-hidden group">
+			<a href="#" class="relative">
+				<img
+					src="/assets/products/product9.jpg"
+					alt="product 9"
+					class="w-full h-80 object-cover"
+				/>
+				<div
+					class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition"
+				>
+				</div>
+			</a>
+			<div class="pt-4 pb-3 px-4">
+				<a href="#">
+					<h4
+						class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition"
+					>
+						Light blue pattern shirt
+					</h4>
+				</a>
+				<div class="flex items-baseline mb-1 space-x-2">
+					<p class="text-xl text-primary font-semibold">$45.00</p>
+					<p class="text-sm text-gray-400 line-through">$55.90</p>
+				</div>
+				<div class="flex items-center">
+					<div class="flex gap-1 text-sm text-yellow-400">
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star text-gray-500"></i></span>
+					</div>
+					<div class="text-xs text-gray-500 ml-3">(124)</div>
+				</div>
+			</div>
+			<div class="flex">
+				<button
+					href="#"
+					class="mr-1 block w-full py-1 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition"
+					>Add to cart
+				</button>
+				<button
+					href="#"
+					class="ml-1 block w-full py-1 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition"
+					>Add to favorites
+				</button>
+			</div>
+		</div>
+		<div class="bg-white shadow rounded overflow-hidden group">
+			<a href="#" class="relative">
+				<img
+					src="/assets/products/product10.jpg"
+					alt="product 10"
+					class="w-full h-80 object-cover"
+				/>
+				<div
+					class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition"
+				>
+				</div>
+			</a>
+			<div class="pt-4 pb-3 px-4">
+				<a href="#">
+					<h4
+						class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition"
+					>
+						Peace sign t-shirt
+					</h4>
+				</a>
+				<div class="flex items-baseline mb-1 space-x-2">
+					<p class="text-xl text-primary font-semibold">$45.00</p>
+					<p class="text-sm text-gray-400 line-through">$55.90</p>
+				</div>
+				<div class="flex items-center">
+					<div class="flex gap-1 text-sm text-yellow-400">
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star text-gray-500"></i></span>
+					</div>
+					<div class="text-xs text-gray-500 ml-3">(120)</div>
+				</div>
+			</div>
+			<div class="flex">
+				<button
+					href="#"
+					class="mr-1 block w-full py-1 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition"
+					>Add to cart
+				</button>
+				<button
+					href="#"
+					class="ml-1 block w-full py-1 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition"
+					>Add to favorites
+				</button>
+			</div>
+		</div>
+		<div class="bg-white shadow rounded overflow-hidden group">
+			<a href="#" class="relative">
+				<img
+					src="/assets/products/product11.jpg"
+					alt="product 11"
+					class="w-full h-80 object-cover"
+				/>
+				<div
+					class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition"
+				>
+				</div>
+			</a>
+			<div class="pt-4 pb-3 px-4">
+				<a href="#">
+					<h4
+						class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition"
+					>
+						Cool leather jacket
+					</h4>
+				</a>
+				<div class="flex items-baseline mb-1 space-x-2">
+					<p class="text-xl text-primary font-semibold">$45.00</p>
+					<p class="text-sm text-gray-400 line-through">$55.90</p>
+				</div>
+				<div class="flex items-center">
+					<div class="flex gap-1 text-sm text-yellow-400">
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star text-gray-500"></i></span>
+					</div>
+					<div class="text-xs text-gray-500 ml-3">(36)</div>
+				</div>
+			</div>
+			<div class="flex">
+				<button
+					href="#"
+					class="mr-1 block w-full py-1 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition"
+					>Add to cart
+				</button>
+				<button
+					href="#"
+					class="ml-1 block w-full py-1 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition"
+					>Add to favorites
+				</button>
+			</div>
+		</div>
+		<div class="bg-white shadow rounded overflow-hidden group">
+			<a href="#" class="relative">
+				<img
+					src="/assets/products/product12.jpg"
+					alt="product 12"
+					class="w-full h-80 object-cover"
+				/>
+				<div
+					class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition"
+				>
+				</div>
+			</a>
+			<div class="pt-4 pb-3 px-4">
+				<a href="#">
+					<h4
+						class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition"
+					>
+						Skinny light jeans
+					</h4>
+				</a>
+				<div class="flex items-baseline mb-1 space-x-2">
+					<p class="text-xl text-primary font-semibold">$45.00</p>
+					<p class="text-sm text-gray-400 line-through">$55.90</p>
+				</div>
+				<div class="flex items-center">
+					<div class="flex gap-1 text-sm text-yellow-400">
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star"></i></span>
+						<span><i class="fa-solid fa-star"></i></span>
+					</div>
+					<div class="text-xs text-gray-500 ml-3">(65)</div>
+				</div>
+			</div>
+			<div class="flex">
+				<button
+					href="#"
+					class="mr-1 block w-full py-1 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition"
+					>Add to cart
+				</button>
+				<button
+					href="#"
+					class="ml-1 block w-full py-1 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition"
+					>Add to favorites
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
