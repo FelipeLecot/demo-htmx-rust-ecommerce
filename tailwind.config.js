@@ -15,7 +15,7 @@ const { fontFamily } = require("tailwindcss/defaultTheme");
         padding: "1rem",
       },
       colors: {
-        'primary': '#e67852',
+        'primary': '#875a4d',
         'secondary': '#4a3932',
         'tertiary': '#1b9787',
         'surface': '#444c4c'
